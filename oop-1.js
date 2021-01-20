@@ -1,3 +1,6 @@
+// <--***** OOP ES5 *****-->
+
+
 // function Person() {
 //   const firstName = "mahmud";
 //   console.log(firstName);
@@ -72,21 +75,48 @@
 // Obj.firstName = "mahmud"
 // Obj.lastName = "hasan"
 
-const Person = {
-    firstName: "Tahsin",
-    lastName: "hasan"
+// const Person = {
+//     firstName: "Tahsin",
+//     lastName: "hasan"
+// }
+
+// const Obj = Object.create(
+//   Person,
+//   {
+//     firstName: {
+//       value: "mahdi",
+//     },
+//     // lastName: {
+//     //   value: "hasan",
+//     // },
+//   }
+// );
+// console.log(Obj)
+// console.log(Obj.firstName);
+
+// <--***** OOP ES6 *****-->
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+  getAllInfo(){
+    return `${this.firstName} ${this.lastName}`;
+  }
 }
 
-const Obj = Object.create(
-  Person,
-  {
-    firstName: {
-      value: "mahdi",
-    },
-    // lastName: {
-    //   value: "hasan",
-    // },
+class NewPerson extends Person {
+  constructor(firstName, lastName, profession) {
+    super(firstName, lastName)
+    this.profession = profession
   }
-);
-console.log(Obj)
-console.log(Obj.firstName);
+  fullName() {
+    return this.firstName + ' ' + this.lastName + ' ' + this.profession
+  }
+}
+
+
+const PersonOne = new Person("mahmud", "hasan")
+const PersonTwo = new Person("mahdi", "hasan")
+const PersonThree = new NewPerson("masnun", "hasan", "study")
+console.log(PersonThree.getAllInfo());
